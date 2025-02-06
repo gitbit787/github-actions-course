@@ -25,7 +25,7 @@ jobs:
         run: echo "push"
   log-level:
     runs-on: ubuntu-latest
-    if: inputs.loglevel != ''
+    if: github.event_name == 'workflow_dispatch' && inputs.loglevel != ''
     steps:
       - name: print log level
         run: echo log level information ${{ inputs.loglevel }}
