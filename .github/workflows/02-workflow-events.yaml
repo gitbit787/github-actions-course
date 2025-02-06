@@ -15,7 +15,7 @@ on:
           - warning
           - debug
   schedule:
-    - cron: '10 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   Echo:
@@ -23,3 +23,9 @@ jobs:
     steps:
       - name: Show the trigger 
         run: echo "push"
+  log-level:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.loglevel }}
+    steps:
+      - name: print log level
+        run: echo log level information ${{ inputs.loglevel }}
