@@ -1,8 +1,8 @@
 name: 02 - Workflow Events
 
 on: 
-  push:
-  pull_request:
+  #push:
+  #pull_request:
   workflow_dispatch:
     inputs:
       loglevel:
@@ -14,8 +14,8 @@ on:
           - info
           - warning
           - debug
-  schedule:
-    - cron: "*/5 * * * *"
+            #schedule:
+            #- cron: "*/5 * * * *"
 
 jobs:
   Echo:
