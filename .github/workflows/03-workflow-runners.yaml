@@ -1,0 +1,29 @@
+name: 03 - Workflow - Runners
+
+on:
+  push:
+
+jobs:
+  ubuntu-echo:
+    run-on: ubuntu-latest
+    steps:
+      - name: Show OS
+        run: |
+          echo "This job is running on Ubuntu"
+          cat /etc/*-release
+          echo $RUNNER_OS
+  windows-echo:
+    run-on: windows-latest
+    steps:
+      - name: Show OS
+        run: |
+          echo "This job is running on Windows"
+          echo %RUNNER_OS%
+
+  mac-echo:
+    run-on: mac-latest
+    steps:
+      - name:
+        run: |
+          echo "This job is running on mac"
+          echo $RUNNER_OS
