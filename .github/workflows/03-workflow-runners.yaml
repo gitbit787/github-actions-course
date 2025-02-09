@@ -5,15 +5,16 @@ on:
 
 jobs:
   ubuntu-echo:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Show OS
         run: |
           echo "This job is running on Ubuntu"
           cat /etc/*-release
           echo $RUNNER_OS
+  
   windows-echo:
-    run-on: windows-latest
+    runs-on: windows-latest
     steps:
       - name: Show OS
         run: |
@@ -21,9 +22,9 @@ jobs:
           echo %RUNNER_OS%
 
   mac-echo:
-    run-on: mac-latest
+    runs-on: mac-latest
     steps:
-      - name:
+      - name: Show OS
         run: |
           echo "This job is running on mac"
           echo $RUNNER_OS
