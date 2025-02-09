@@ -14,8 +14,8 @@ on:
           - info
           - warning
           - debug
-            #schedule:
-            #- cron: "*/5 * * * *"
+  schedule:
+    - cron: "*/5 * * * *"
 
 jobs:
   Echo:
