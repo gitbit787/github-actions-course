@@ -1,0 +1,14 @@
+name: 04 - Using Actions
+
+on:
+  push:
+
+jobs:
+  build:
+    steps:
+      - name: check out
+        run: git clone git@github.com:gitbit787/github-actions-course.git
+    steps:
+      - name: printing folders
+        run: pwd
+     
