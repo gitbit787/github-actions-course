@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node
-        run: |
-          git clone git@github.com:gitbit787/github-actions-course.git
-          ls -ila 
+      - name: Check Out
+        uses: actions/checkout@v4
+      - name: Printing Folders
+        run: ls -ila 
