@@ -1,0 +1,16 @@
+name: 05 - 1 - Event Filters and Activity
+
+on: 
+  pull_request:
+    type: [opened, synchronize]
+    branch:
+      - main
+
+jobs:
+  echo:
+    run-on: ubuntu-latest
+    step:
+      - name: print statement
+        run: echo "running job only when PR and branch is main, when synchronized or opened type"
+
+
