@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  echo:
+  Filters_Activity:
     runs-on: ubuntu-latest
     steps:
       - name: print statement
