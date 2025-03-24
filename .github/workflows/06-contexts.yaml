@@ -4,11 +4,18 @@ on:
   workflow_dispatch:
   push:
 
+env:
+  MY_WORKFLOW_VAR: workflow
+  MY_OVERWRITTEN_VAR: workflow
+
 jobs:
   echo-data:
     runs-on: ubuntu-latest
     steps:
       - name: display information 
+        env:
+          MY_JOB_VAR: job
+          MY_OVERWRITTEN_VAR: job
         run: |
           echo "Event name: ${{github.event_name}}"
           echo "REF: ${{github.ref}}"
@@ -17,7 +24,19 @@ jobs:
           echo "Workflow: ${{github.workflow}}"
           echo "Run ID: ${{github.run_id}}"
           echo "Run number: ${{github.run_number}}"
+          echo "Workflow var: ${{env.MY_WORKFLOW_VAR}}"
+          echo "Overwritten var: ${{env.MY_OVERWRITTEN_VAR}}"
       - name: retrieve env
         run: |
           echo "VARS: ${{vars.MY_STUFF}}"
           echo "the_var = ${{vars.MY_VAR}}"
+      - name: print env variables
+        env:
+          MY_OVERWRITTEN_VAR: step
+        run: |
+          echo "Workflow env: ${{vars.MY_WORKFLOW_VAR}}"
+          echo "Overwritten env: ${{vars.MY_OVERWRITTEN_VAR}}"
+      - name: print default env variables
+        run: |
+          echo "Workflow env: ${{vars.MY_WORKFLOW_VAR}}"
+          echo "Overwritten env: ${{vars.MY_OVERWRITTEN_VAR}}"
