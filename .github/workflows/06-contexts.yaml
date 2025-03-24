@@ -20,4 +20,4 @@ jobs:
       - name: retrieve env
         run: |
           echo "VARS: ${{vars.MY_STUFF}}"
-          echo the_var = ${{env.MY_VAR}}
+          echo "the_var = ${{vars.MY_VAR}}"
