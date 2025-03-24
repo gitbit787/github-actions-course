@@ -10,8 +10,11 @@ jobs:
     steps:
       - name: display information 
         run: |
-          echo "Event name: ${{github.name}}"
+          echo "Event name: ${{github.event_name}}"
           echo "REF: ${{github.ref}}"
           echo "SHA: ${{github.sha}}"
           echo "Actor: ${{github.actor}}"
+          echo "Workflow: ${{github.workflow}}"
+          echo "Run ID: ${{github.run_id}}"
+          echo "Run number: ${{github.run_number}}"
 
