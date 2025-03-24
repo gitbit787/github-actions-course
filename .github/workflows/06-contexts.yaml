@@ -8,10 +8,10 @@ jobs:
   echo-data:
     runs-on: ubuntu-latest
     steps:
-      - name: echo-data
+      - name: display information 
         run: |
-          echo "Event name: <retrieve the event name here>"
-          echo "Ref: <retrieve the ref here>"
-          echo "SHA: <retrieve the commit sha here>"
-          echo "Actor: <retrieve the actor name here>"
+          echo "Event name: ${github.name}"
+          echo "REF: ${github.ref}"
+          echo "SHA: ${github.sha}"
+          echo "Actor: ${github.actor}"
 
