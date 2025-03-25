@@ -12,7 +12,7 @@ on:
 jobs:
   echo-expressions:
     runs-on: ubuntu-latest
-    if: ${{ inputs.debug }} == true
+    if: ${{ inputs.debug == true}}
     steps:
       - name: debug Print start-up data
         run: |
