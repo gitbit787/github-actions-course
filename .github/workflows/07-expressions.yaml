@@ -12,12 +12,19 @@ on:
 jobs:
   echo-expressions:
     runs-on: ubuntu-latest
-    if: ${{ inputs.debug == true}}
+    
     steps:
       - name: debug Print start-up data
+        if: ${{ inputs.debug == true}}
         run: |
           echo "Triggered by: ${{ github.triggering_actor }} - ${{ github.event_name }}"
           echo "Branch: ${{ github.ref }}"
           echo "Commit SHA: ${{ github.sha }}"
+          echo "Runner OS: ${{ runner.os }}"
+      - name: debug Print when triggered from main
+        if: ${{ inputs.debug == true && github.ref_name == main}}
+        run: echo "I was triggered by main"
+      - name: Greetings
+        run: echo "Hello World"
 
     
