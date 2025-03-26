@@ -1,5 +1,7 @@
 name: 07 - Using Expressions
 
+run-name: 07 - Using expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
+
 on: 
   push:
   workflow_dispatch:
@@ -8,8 +10,6 @@ on:
         type: boolean
         default: false
         description: bool value that determines whether to print information
-
-run-name: 07 - Using expressions | DEBUG - < 'ON' if the debug input is true, 'OFF' otherwise>
   
 jobs:
   echo-expressions:
