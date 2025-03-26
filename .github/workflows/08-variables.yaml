@@ -16,17 +16,18 @@ jobs:
       OVERWRITTEN: 'I have been overwritten by env job var'
     steps:
     - name: print env vars
+      env:
+        STEP_VAR: 'I am a step env var'
+        STEP_VAR2: 'I am another step env var'
       run: |
         echo "steps env var: ${{ env.STEP_VAR }}"
         echo "steps env var2: ${{ env.STEP_VAR2 }}"
         echo "job env var: ${{ env.JOB_VAR }}"
         echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
         echo "Overwritten env var: ${{ env.OVERWRITTEN }}"
-      env:
-        STEP_VAR: 'I am a step env var'
-        STEP_VAR2: 'I am another step env var'
     - name: Overwritten job variable
       run: |
         echo "Step env var: ${{ env.OVERWRITTEN }}"
       env:
+        OVERWRITTEN: 'I have been overwritten by step level'
         OVERWRITTEN: 'I have been overwritten at step level'
