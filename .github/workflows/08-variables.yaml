@@ -30,4 +30,3 @@ jobs:
         echo "Step env var: ${{ env.OVERWRITTEN }}"
       env:
         OVERWRITTEN: 'I have been overwritten by step level'
-        OVERWRITTEN: 'I have been overwritten at step level'
