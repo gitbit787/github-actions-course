@@ -45,7 +45,7 @@ jobs:
         run: "echo Repository Var: ${{ vars.REPOSITORY_VAR }}"
   echo-prod-var:
     runs-on: ubuntu-latest
-    environment: inputs.workflow_type
+    environment: ${{ inputs.workflow_type }}
     steps:
       - name: Print prod var
         run: |
