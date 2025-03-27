@@ -3,6 +3,11 @@ name: 08 - Using Variables
 on:
   push:
   workflow_dispatch:
+    inputs:
+      workflow_type:
+        type: string
+        default: prod
+        description: determine which type of environment will be configured
 
 env:
   WORKFLOW_VAR: "I am a workflow var"
@@ -40,7 +45,7 @@ jobs:
         run: "echo Repository Var: ${{ vars.REPOSITORY_VAR }}"
   echo-prod-var:
     runs-on: ubuntu-latest
-    environment: prod
+    environment: inputs.workflow_type
     steps:
       - name: Print prod var
         run: |
