@@ -17,31 +17,17 @@ jobs:
       OVERWRITTEN: 'I have been overwritten by env job var'
     steps:
     - name: print env vars
-      run: |
-        echo "steps env var ${{ env.STEP_VAR }}"
-        echo "steps env var 2 ${{ env.STEP_VAR2 }}"
-        echo "job env var ${{ env.JOB_VAR }}"
-        echo "Workflow env var 2 ${{ env.WORKFLOW_VAR }}"
-        echo "Overwritten env var ${{ env.OVERWRITTEN }}"
       env:
         STEP_VAR: 'I am a step env var'
         STEP_VAR2: 'I am another step env var'
+      run: |
+        echo "steps env var: ${{ env.STEP_VAR }}"
+        echo "steps env var2: ${{ env.STEP_VAR2 }}"
+        echo "job env var: ${{ env.JOB_VAR }}"
+        echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
+        echo "Overwritten env var: ${{ env.OVERWRITTEN }}"
     - name: Overwritten job variable
       run: |
         echo "Step env var: ${{ env.OVERWRITTEN }}"
       env:
-        OVERWRITTEN: 'I have been overwritten at step level'
-  echo-repo-var:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Print Repository variables
-      run: "echo Repository var: ${{ env.REPOSITORY_VAR }}"
-  echo-prod-var:
-    runs-on: ubuntu-latest
-    environment: prod
-    steps:
-    - name: Print variables
-      run: |
-         echo "Target Prod: ${{ env.TARGET_VAR }}"
-         echo "Overwritten Prod: ${{ env.OVERWRITTEN_VAR }}"
-         echo "Repository Prod: ${{ env.REPOSITORY_VAR }}"
+        OVERWRITTEN: 'I have been overwritten by step level'
