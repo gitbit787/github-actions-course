@@ -12,7 +12,7 @@ on:
 env:
   WORKFLOW_VAR: "I am a workflow var"
   OVERWRITTEN: "I will be overwritten"
-  UNDEFINED_VAR_WITH_DEFAULT: vars.UNDEFINED_VAR && 'default value'
+  UNDEFINED_VAR_WITH_DEFAULT: vars.UNDEFINED_VAR || 'default value'
 
 # changes for debug purposes
 
@@ -53,3 +53,8 @@ jobs:
           echo "Repository env var: ${{ vars.REPOSITORY_VAR }}"
           echo "Target env var: ${{ vars.TARGET_VAR }}"
           echo "Input value: ${{ inputs.workflow_type }}"
+  echo-undefined-var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print undefined var
+        run: "echo Undefined var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
