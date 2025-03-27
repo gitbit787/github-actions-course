@@ -44,6 +44,6 @@ jobs:
     steps:
       - name: Print prod var
         run: |
-          echo "Overwritten env var: ${{ env.OVERWRITTEN_VAR }}"
+          echo "Overwritten env var: ${{ vars.OVERWRITTEN_VAR }}"
           echo "Repository env var: ${{ vars.REPOSITORY_VAR }}"
-          echo "Target env var: ${{ env.TARGET_VAR }}"
+          echo "Target env var: ${{ vars.TARGET_VAR }}"
