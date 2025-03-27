@@ -7,6 +7,7 @@ on:
 env:
   WORKFLOW_VAR: "I am a workflow var"
   OVERWRITTEN: "I will be overwritten"
+  UNDEFINED_VAR_WITH_DEFAULT: vars.UNDEFINED_VAR && 'default value'
 
 jobs:
   echo-job-var:
@@ -30,3 +31,17 @@ jobs:
         echo "Step env var: ${{ env.OVERWRITTEN }}"
       env:
         OVERWRITTEN: 'I have been overwritten at step level'
+  echo-repo-var:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print Repository variables
+      run: "echo Repository var: ${{ env.REPOSITORY_VAR }}"
+  echo-prod-var:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+    - name: Print variables
+      run: |
+         echo "Target Prod: ${{ env.TARGET_VAR }}"
+         echo "Overwritten Prod: ${{ env.OVERWRITTEN_VAR }}"
+         echo "Repository Prod: ${{ env.REPOSITORY_VAR }}"
