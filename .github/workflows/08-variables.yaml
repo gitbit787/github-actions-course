@@ -18,32 +18,32 @@ jobs:
       JOB_VAR: 'I am a env job var'
       OVERWRITTEN: 'I have been overwritten by env job var'
     steps:
-    - name: print env vars
-      env:
-        STEP_VAR: 'I am a step env var'
-        STEP_VAR2: 'I am another step env var'
-      run: |
-        echo "steps env var: ${{ env.STEP_VAR }}"
-        echo "steps env var2: ${{ env.STEP_VAR2 }}"
-        echo "job env var: ${{ env.JOB_VAR }}"
-        echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
-        echo "Overwritten env var: ${{ env.OVERWRITTEN }}"
-    - name: Overwritten job variable
-      run: |
-        echo "Step env var: ${{ env.OVERWRITTEN }}"
-      env:
-        OVERWRITTEN: 'I have been overwritten by step level'
+      - name: print env vars
+        env:
+          STEP_VAR: 'I am a step env var'
+          STEP_VAR2: 'I am another step env var'
+        run: |
+          echo "steps env var: ${{ env.STEP_VAR }}"
+          echo "steps env var2: ${{ env.STEP_VAR2 }}"
+          echo "job env var: ${{ env.JOB_VAR }}"
+          echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
+          echo "Overwritten env var: ${{ env.OVERWRITTEN }}"
+      - name: Overwritten job variable
+        run: |
+          echo "Step env var: ${{ env.OVERWRITTEN }}"
+        env:
+          OVERWRITTEN: 'I have been overwritten by step level'
   echo-repo-var:
     runs-on: ubuntu-latest
     steps:
-    - name: Print Repository Var
-      run: "echo Repository Var: ${{ env.REPOSITORY_VAR }}"
+      - name: Print Repository Var
+        run: "echo Repository Var: ${{ vars.REPOSITORY_VAR }}"
   echo-prod-var:
     runs-on: ubuntu-latest
-    environment: 'prod'
+    environment: prod
     steps:
-    - name: Print prod var
-      run: |
-        echo "Overwritten env var: ${{ env.OVERWRITTEN }}"
-        echo "Repository env var: ${{ vars.REPOSITORY_VAR }}"
-        echo "Target env var: ${{ env.TARGET_VAR }}"
+      - name: Print prod var
+        run: |
+          echo "Overwritten env var: ${{ env.OVERWRITTEN_VAR }}"
+          echo "Repository env var: ${{ vars.REPOSITORY_VAR }}"
+          echo "Target env var: ${{ env.TARGET_VAR }}"
