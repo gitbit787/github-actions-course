@@ -39,8 +39,8 @@ jobs:
     - name: Print Repository Var
       run: "echo Repository Var: ${{ env.REPOSITORY_VAR }}"
   echo-prod-var:
-    environment: prod
     runs-on: ubuntu-latest
+    environment: prod
     steps:
     - name: Print prod var
       run: |
