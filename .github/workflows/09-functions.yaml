@@ -8,6 +8,10 @@ jobs:
   echo-funct:
     runs-on: ubuntu-latest
     steps:
+      - name: Print PR title
+        run: "echo PR title: ${{ github.event.pull_request.title }}"
+      - name: Print PR label
+        run: "echo PR lable: ${{ github.event.pull_request.label }}"
       - name: sleepy time
         run: sleep 20
       - name: Failing Step
