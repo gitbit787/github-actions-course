@@ -8,6 +8,8 @@ jobs:
   echo-funct:
     runs-on: ubuntu-latest
     steps:
+      - name: sleepy time
+        run: sleep 20
       - name: Failing Step
         run: 'xx -ila'
       - name: I will be skipped
