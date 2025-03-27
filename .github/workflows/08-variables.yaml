@@ -33,3 +33,17 @@ jobs:
         echo "Step env var: ${{ env.OVERWRITTEN }}"
       env:
         OVERWRITTEN: 'I have been overwritten by step level'
+  echo-repo-var:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print Repository Var
+      run: "echo Repository Var: ${{ env.REPOSITORY_VAR }}"
+  echo-prod-var:
+    environment: prod
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print prod var
+      run: |
+        echo "Overwritten env var: ${{ env.OVERWRITTEN }}"
+        echo "Repository env var: ${{ env.REPOSITORY_VAR }}"
+        echo "Target env var: ${{ env.TARGET_VAR }}"
